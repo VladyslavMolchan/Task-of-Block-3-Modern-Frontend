@@ -60,7 +60,7 @@ export const searchBooks = async (filters = {}, page = 1, size = 10) => {
   const res = await fetch(`${API_BASE}/search?${params.toString()}`, {
     method: "POST", // ⚠ Важливо
     headers: { "Content-Type": "application/json" },
-    body: "", // бекенд чекає порожнє тіло
+    body: "", 
   });
 
   if (!res.ok) {

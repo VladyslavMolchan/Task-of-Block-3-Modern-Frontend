@@ -139,7 +139,7 @@ const BooksList = () => {
   };
 
   return (
-    <Paper sx={{ p: 3, mt: 4, mb: 4 }}>
+    <Paper sx={{ p: 3}}>
       <Typography variant="h4" fontWeight={700} gutterBottom>
         Список книг
       </Typography>
