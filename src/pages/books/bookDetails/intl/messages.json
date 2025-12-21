@@ -1,0 +1,21 @@
+{
+  "titleRequired": "Title is required",
+  "titleMaxLength": "Maximum 50 characters",
+  "authorIdRequired": "Author ID is required",
+  "authorIdPositiveNumber": "Author ID must be a positive number",
+  "yearRequired": "Year is required",
+  "yearPositiveNumber": "Year must be a positive number",
+  "bookCreated": "Book successfully created",
+  "bookUpdated": "Book successfully updated",
+  "saveError": "Error while saving the book",
+  "cancel": "Cancel",
+  "create": "Create",
+  "save": "Save",
+  "back": "Back",
+  "bookListTitle": "Books List",
+  "filter": "Filter",
+  "addBook": "Add Book",
+  "loadError": "Error loading book",
+  "bookDeleted": "Book successfully deleted",
+  "deleteError": "Failed to delete the book"
+}

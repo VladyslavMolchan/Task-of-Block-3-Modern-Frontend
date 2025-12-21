@@ -1,0 +1,21 @@
+{
+  "titleRequired": "Назва обов'язкова",
+  "titleMaxLength": "Максимум 50 символів",
+  "authorIdRequired": "ID автора обов'язковий",
+  "authorIdPositiveNumber": "ID автора має бути додатним числом",
+  "yearRequired": "Рік обов'язковий",
+  "yearPositiveNumber": "Рік має бути додатним числом",
+  "bookCreated": "Книга успішно створена",
+  "bookUpdated": "Книга успішно оновлена",
+  "saveError": "Помилка при збереженні книги",
+  "cancel": "Скасувати",
+  "create": "Створити",
+  "save": "Зберегти",
+  "back": "Назад",
+  "bookListTitle": "Список книг",
+  "filter": "Фільтр",
+  "addBook": "Додати книгу",
+  "loadError": "Помилка при завантаженні книги",
+  "bookDeleted": "Книга успішно видалена",
+  "deleteError": "Не вдалося видалити книгу"
+}
