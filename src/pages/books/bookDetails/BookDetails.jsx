@@ -16,6 +16,7 @@ import CancelIcon from "@mui/icons-material/Cancel";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 import BookForm from "../components/BookFormDetails";
+import ReviewsBlock from "../components/ReviewsBlock"; 
 
 const BookDetails = () => {
   const { id } = useParams();
@@ -31,39 +32,6 @@ const BookDetails = () => {
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
   const [notification, setNotification] = useState({ open: false, message: "", type: "success" });
-
-  const validateField = (field, value) => {
-    switch (field) {
-      case "title":
-        if (!value?.trim()) return "Назва обов'язкова";
-        if (value.length > 50) return "Максимум 50 символів";
-        return "";
-      case "authorId":
-        if (value === "") return "ID автора обов'язковий";
-        if (isNaN(value) || Number(value) <= 0) return "ID має бути додатним числом";
-        return "";
-      case "yearPublished":
-        if (value === "") return "Рік обов'язковий";
-        if (isNaN(value) || Number(value) <= 0) return "Рік має бути додатним числом";
-        return "";
-      default:
-        return "";
-    }
-  };
-
-  const validate = () => {
-    const newErrors = {};
-    let valid = true;
-    Object.keys(editBook).forEach((field) => {
-      const error = validateField(field, editBook[field]);
-      if (error) {
-        newErrors[field] = error;
-        valid = false;
-      }
-    });
-    setErrors(newErrors);
-    return valid;
-  };
 
   const loadBook = useCallback(async () => {
     if (isNew) return;
@@ -88,54 +56,13 @@ const BookDetails = () => {
     loadBook();
   }, [loadBook]);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-
-    if (name === "title" && value.length <= 50) {
-      setEditBook((p) => ({ ...p, [name]: value }));
-      return;
-    }
-
-    if (name === "authorId" || name === "yearPublished") {
-      if (value === "" || Number(value) >= 0) setEditBook((p) => ({ ...p, [name]: value }));
-    }
-  };
-
   const navigateBack = () => {
     const params = searchParams.toString();
     navigate(`/books${params ? `?${params}` : ""}`);
   };
 
-  const handleSave = async () => {
-    if (!validate()) return;
-    try {
-      setLoading(true);
-      if (isNew) {
-        await createBook(editBook);
-        setNotification({ open: true, message: "Книга успішно створена", type: "success" });
-        navigateBack();
-      } else {
-        await updateBook(id, editBook);
-        setBook(editBook);
-        setMode("view");
-        setNotification({ open: true, message: "Книга успішно оновлена", type: "success" });
-      }
-    } catch (err) {
-      setNotification({ open: true, message: err.message || "Помилка при збереженні", type: "error" });
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleCancel = () => {
-    setEditBook(book);
-    setErrors({});
-    if (isNew) navigateBack();
-    else setMode("view");
-  };
-
   return (
-    <Paper sx={{ maxWidth: 600, mx: "auto", mt: 4, mb: 4, p: 3, position: "relative" }}>
+    <Paper sx={{ maxWidth: 700, mx: "auto", mt: 4, mb: 4, p: 3, position: "relative" }}>
       {loading && (
         <Box
           position="absolute"
@@ -152,60 +79,37 @@ const BookDetails = () => {
 
       <CardTitle sx={{ mb: 2 }}>
         <Typography variant="h5" fontWeight={600}>
-          {isNew ? "Нова книга" : mode === "view" ? "Перегляд книги" : "Редагування книги"}
+          {isNew ? "Нова книга" : "Перегляд книги"}
         </Typography>
 
-        {!isNew && mode === "view" && (
+        {!isNew && (
           <IconButton onClick={() => setMode("edit")}>
             <EditIcon />
           </IconButton>
         )}
       </CardTitle>
 
-      <CardContent sx={{ mb: 2 }}>
-        <BookForm
-          book={editBook}
-          errors={errors}
-          mode={mode}
-          onChange={handleChange}
-        />
+      <CardContent>
+        <BookForm book={editBook} errors={errors} mode="view" />
       </CardContent>
 
-      <CardActions sx={{ gap: 1.5, mb: 2 }}>
-        {mode === "edit" ? (
-          <>
-            <Button
-              variant="contained"
-              startIcon={<SaveIcon />}
-              onClick={handleSave}
-              isLoading={loading}
-            >
-              {isNew ? "Створити" : "Зберегти"}
-            </Button>
-            <Button
-              colorVariant="error"
-              startIcon={<CancelIcon />}
-              onClick={handleCancel}
-            >
-              Скасувати
-            </Button>
-          </>
-        ) : (
-          <Button
-            variant="outlined"
-            startIcon={<ArrowBackIcon />}
-            onClick={navigateBack}
-          >
-            Назад
-          </Button>
-        )}
+      <CardActions>
+        <Button
+          variant="outlined"
+          startIcon={<ArrowBackIcon />}
+          onClick={navigateBack}
+        >
+          Назад
+        </Button>
       </CardActions>
+
+      {!isNew && <ReviewsBlock bookId={Number(id)} />}
 
       <Notification
         open={notification.open}
         message={notification.message}
         type={notification.type}
-        onClose={() => setNotification((prev) => ({ ...prev, open: false }))}
+        onClose={() => setNotification((p) => ({ ...p, open: false }))}
       />
     </Paper>
   );

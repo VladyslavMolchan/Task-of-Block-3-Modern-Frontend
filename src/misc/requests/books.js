@@ -1,6 +1,6 @@
 const API_BASE = "http://localhost:8080/api/books";
 
-// Отримати список книг (пагінація)
+
 export const fetchBooks = async (page = 1, size = 10) => {
   const url = `${API_BASE}?page=${page}&size=${size}`;
   const res = await fetch(url, { cache: "no-store" });
