@@ -1,0 +1,14 @@
+{
+  "booksListTitle": "Список книг",
+  "filters": "Фільтри",
+  "addBook": "Додати книгу",
+  "titleLabel": "Назва",
+  "authorLabel": "Автор",
+  "authorIdLabel": "ID автора",
+  "yearLabel": "Рік",
+  "clearFilters": "Скинути",
+  "noBooks": "Немає книг для відображення",
+  "loadBooksError": "Помилка при завантаженні книг",
+  "bookDeleted": "Книга успішно видалена",
+  "deleteError": "Помилка при видаленні"
+}

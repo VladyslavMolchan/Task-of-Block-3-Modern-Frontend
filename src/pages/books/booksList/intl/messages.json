@@ -1,0 +1,14 @@
+{
+  "booksListTitle": "Books List",
+  "filters": "Filters",
+  "addBook": "Add Book",
+  "titleLabel": "Title",
+  "authorLabel": "Author",
+  "authorIdLabel": "Author ID",
+  "yearLabel": "Year",
+  "clearFilters": "Clear",
+  "noBooks": "No books available",
+  "loadBooksError": "Error loading books",
+  "bookDeleted": "Book successfully deleted",
+  "deleteError": "Error deleting book"
+}

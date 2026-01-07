@@ -26,6 +26,7 @@ const commonColors = {
     warning: '#FAEDD5',
   },
 };
+
 const theme = {
   button: {
     color: {
@@ -37,8 +38,8 @@ const theme = {
       },
       primary: {
         background: '#51b051',
-        backgroundDisabled: '#51b051',
-        backgroundHovered: '#60bb60',
+        backgroundDisabled: '#A3D8A5',  
+        backgroundHovered: '#60bb60',   
         text: commonColors.text.primaryContrast,
       },
       secondary: {
@@ -46,6 +47,27 @@ const theme = {
         backgroundDisabled: 'rgba(255, 255, 255, 0.1)',
         backgroundHovered: 'rgba(0, 0, 0, 0.05)',
         text: commonColors.text.primary,
+      },
+      // Оновлені кольори для Notification
+      success: {
+        background: '#16bb00',
+        backgroundHovered: '#0f8c00',
+        text: '#fff',
+      },
+      error: {
+        background: '#d32f2f',
+        backgroundHovered: '#9a0007',
+        text: '#fff',
+      },
+      info: {
+        background: '#1976d2',
+        backgroundHovered: '#115293',
+        text: '#fff',
+      },
+      warning: {
+        background: '#ffa000',
+        backgroundHovered: '#ff6f00',
+        text: '#fff',
       },
     },
   },

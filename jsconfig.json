@@ -22,5 +22,5 @@
   },
   "include": [
     "src"
-  ]
+, "src/misc/requests/reviews.js", "src/setupProxy.js"  ]
 }
